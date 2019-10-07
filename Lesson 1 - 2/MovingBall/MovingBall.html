@@ -19,6 +19,7 @@
 			 
 			var canvasWidth = mainCanvas.width;
 			var canvasHeight = mainCanvas.height;
+			var framesPerSecond = 10;
 			var x = 0;
 			var y = 0;
 			 
@@ -40,11 +41,20 @@
 				mainContext.fillStyle = "#006699";
 				mainContext.fill();
 				
-				requestAnimationFrame(drawCircle); //calls draw circle again
+				//requestAnimationFrame(drawCircle); //calls draw circle again
 			}
-			drawCircle();
-		 
 			
+			function animate() {
+				setTimeout(function() {
+					requestAnimationFrame(animate);
+			 
+					// animating/drawing code goes here
+					drawCircle();
+			 
+				}, 1000 / framesPerSecond);
+			}
+			
+			animate();
 		</script>
 	</body>
 </html>
