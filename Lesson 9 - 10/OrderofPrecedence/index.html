@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS Precedence</title>
+        <style>
+            h1 {
+                color: purple;   
+            }
+            
+            .big {
+                font-size: 40px;
+            }
+            
+            p {
+                color: green;
+            }
+            
+            .alert {
+                color: red;
+            }
+            
+            /*
+             * This rule takes precedence
+             * over the earlier .alert rule
+             * because it shows up later in the file.
+             */
+            .alert {
+                color: orange;
+            }
+            
+            /*
+             * This ID rule takes precedence over
+             * both the p rule and the .alert rule
+             * because ID rules are more specific than
+             * class and tag rules.
+             */
+            #blue-text {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="big">H1 tag with class big</h1>
+        <p class="alert">P tag with class alert</p>
+        <p class="alert" id="blue-text">P tag with class alert AND id blue-text</p>
+    </body>
+</html>
