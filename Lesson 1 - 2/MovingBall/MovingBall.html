@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<style>
+	canvas {
+		border: 3px #CCC solid;
+	}
+	</style>
+
+	<body>
+		<div id="container">
+			<canvas id="myCanvas" height="450" width="450"></canvas>
+		</div>
+		<script>
+			var mainCanvas = document.querySelector("#myCanvas");
+			var mainContext = mainCanvas.getContext("2d");
+			
+			var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || 
+                            window.msRequestAnimationFrame;
+			 
+			var canvasWidth = mainCanvas.width;
+			var canvasHeight = mainCanvas.height;
+			var x = 0;
+			var y = 0;
+			 
+			function drawCircle() {
+				mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+     
+				// color in the background
+				mainContext.fillStyle = "#EEEEEE";
+				mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+				 
+				// draw the circle
+				mainContext.beginPath();
+				 
+				var radius = 20;
+				mainContext.arc(x=x+10, y=y+10, radius, 0, Math.PI * 2, false);
+				mainContext.closePath();
+				 
+				// color in the circle
+				mainContext.fillStyle = "#006699";
+				mainContext.fill();
+				
+				requestAnimationFrame(drawCircle); //calls draw circle again
+			}
+			drawCircle();
+		 
+			
+		</script>
+	</body>
+</html>
