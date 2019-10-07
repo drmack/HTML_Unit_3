@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<canvas id="myCanvas" height=500 width=500></canvas>
+<script>
+/* This program draws a magic 8 ball on the screen
+ * and shakes it every 2 seconds.
+ * Shaking means it changes the number and color of the ball.
+ *
+ * To do this, we set a timer because we can't use a loop because
+ * you can't set a time delay in a loop.
+ */
+
+var FONT = "48pt Arial";
+
+var mainCanvas = document.querySelector("#myCanvas");
+var mainContext = mainCanvas.getContext("2d");
+var mainContext1 = mainCanvas.getContext("2d");
+
+var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || 
+				window.msRequestAnimationFrame;
+ 
+var canvasWidth = mainCanvas.width;
+var canvasHeight = mainCanvas.height;
+
+var x = 250;
+var y = 250;
+ 
+/* shake sets the text of number to a random number
+ * and changes the color of the circle to a random
+ * color.
+ *
+ * Note how it does not create a new Circle or new Text.
+ * It just uses the ones we created in the start function.
+ */ 
+ 
+function shake() {
+	mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+
+	// color in the background
+	mainContext.fillStyle = "#EEEEEE";
+	mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+	 
+	// draw the circle
+	mainContext.beginPath();
+	 
+	mainContext.arc(x, y, 120, 0, Math.PI * 2, false);
+	
+	//fill in first circle
+	mainContext.fillStyle = "#006699";
+	mainContext.fill();
+	
+	
+	mainContext.beginPath();
+	mainContext1.arc(x, y, 60, 0, Math.PI * 2, false);
+	
+	// color in the second circle
+	mainContext.fillStyle = "#FFFFFF";
+	mainContext1.fill();
+	
+	var random_number = Math.floor(Math.random()*9+1);
+	mainContext.font = FONT;
+	
+	var red = Math.floor(Math.random()*255+1);
+	var blue = Math.floor(Math.random()*255+1);
+	var green = Math.floor(Math.random()*255+1);
+	
+	mainContext.fillStyle = 'rgb(' + red + ', ' + green + ', ' + blue;
+	mainContext.fillText(random_number,  233, 275);
+	
+	mainContext.closePath();
+	
+	setInterval(shake, 2000);
+}
+
+shake();
+
+ 
+</script>
+</body>
+</html>
