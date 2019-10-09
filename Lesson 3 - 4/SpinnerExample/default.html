@@ -1,55 +1,88 @@
-<!DOCTYPE HTML>
 <html>
-
 <head>
-<meta charset="UTF-8">
-<title>Canvas Spinner</title>
-<style type="text/css">
-#spinner {
-  width: 50;
-  height: 50;
-  padding: 30px;
+<title>Spinner Example</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/7666c7e4765f71aa338f37e94853d4cc7ed720a0/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
 }
 
 </style>
 
-<body data-rsssl=1>
+</head>
+
+<body>
+<h1>Spinner Example</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+
+<script>
+window.onload = function() {
+
+    /* Note:
+ *      This sample exercise is not included in the videos. 
+ *      It is included here to show another way that timers can be used. 
+ */
+
+// Constants
+var LENGTH = 150;
+var DELAY = 30;
+
+var X_CENTER = getWidth()/2;
+var Y_CENTER = getHeight()/2;
+
+var line;
+var time = 0;
+
+/* This program rotates a line in a circle
+ * around the center of the screen. It uses trigonometry, 
+ * so if you aren't familiar with that, you can skip this 
+ * example.
+ */
+function start() {
+	// Create the line and add it.
+	line = new Line(X_CENTER, Y_CENTER, X_CENTER, Y_CENTER);
+	add(line);
 	
-<canvas id="spinner"></canvas>
+	/* This sets a timer that calls the function
+	 * rotateLine every DELAY milliseconds
+	 */
+	setTimer(rotateLine, DELAY);
+}
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+/* This function adds to the time of the program
+ * and uses the sin and cos of the time to calculate
+ * where the endpoint of the line should be and it
+ * sets the endpoint
+ */
+function rotateLine() {
+	time += 0.1;
 	
-	<script type="text/javascript">
-var canvas = document.getElementById('spinner');
-var context = canvas.getContext('2d');
-var start = new Date();
-var lines = 16,  
-    cW = context.canvas.width,
-    cH = context.canvas.height;
+	var dx = LENGTH * Math.cos(time);
+	var dy = LENGTH * Math.sin(time);
+	
+	line.setEndpoint(X_CENTER + dx, Y_CENTER - dy);
+}
 
-var draw = function() {
-    var rotation = parseInt(((new Date() - start) / 1000) * lines) / lines;
-    context.save();
-    context.clearRect(0, 0, cW, cH);
-    context.translate(cW / 2, cH / 2);
-    context.rotate(Math.PI * 2 * rotation);
-    for (var i = 0; i < lines; i++) {
 
-        context.beginPath();
-        context.rotate(Math.PI * 2 / lines);
-        context.moveTo(cW / 10, 0);
-        context.lineTo(cW / 4, 0);
-        context.lineWidth = cW / 30;
-        context.strokeStyle = "rgba(0, 0, 0," + i / lines + ")";
-        context.stroke();
+    if (typeof start === 'function') {
+        start();
     }
-    context.restore();
 };
-window.setInterval(draw, 1000 / 30);
+</script>
 
-
-
-
-  </script>
-	
-</body> 
+</body>
+</html>

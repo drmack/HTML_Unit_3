@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Moving Ball</title>
+<title>Target</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -19,7 +19,7 @@ canvas {
 </head>
 
 <body>
-<h1>Moving Ball</h1>
+<h1>Target</h1>
 
 
 
@@ -31,17 +31,9 @@ class="codehs-editor-canvas"></canvas>
 <script>
 window.onload = function() {
 
-    var ball;
-
+    // This program draws a target that follows the mouse
 function start(){
-	ball = new Circle(20);
-	add(ball);
 	
-	setTimer(draw, 20);
-}
-
-function draw(){
-	ball.move(2, 2);
 }
 
 

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Moving Ball</title>
+<title>Basic Snake</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -19,7 +19,7 @@ canvas {
 </head>
 
 <body>
-<h1>Moving Ball</h1>
+<h1>Basic Snake</h1>
 
 
 
@@ -31,17 +31,18 @@ class="codehs-editor-canvas"></canvas>
 <script>
 window.onload = function() {
 
-    var ball;
+    var SNAKE_WIDTH = 40;
+var SNAKE_HEIGHT = 40;
+var SNAKE_COLOR = Color.green;
+
+// Constants to represent the directions
+var EAST = 0;
+var SOUTH = 1;
+var WEST = 2;
+var NORTH = 3;
 
 function start(){
-	ball = new Circle(20);
-	add(ball);
 	
-	setTimer(draw, 20);
-}
-
-function draw(){
-	ball.move(2, 2);
 }
 
 

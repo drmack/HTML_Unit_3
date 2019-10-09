@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Moving Ball</title>
+<title>Keyboard Square</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -19,7 +19,7 @@ canvas {
 </head>
 
 <body>
-<h1>Moving Ball</h1>
+<h1>Keyboard Square</h1>
 
 
 
@@ -31,17 +31,32 @@ class="codehs-editor-canvas"></canvas>
 <script>
 window.onload = function() {
 
-    var ball;
+    var square;
 
 function start(){
-	ball = new Circle(20);
-	add(ball);
+	square = new Rectangle(40, 40);
+	square.setPosition(100, 100);
+	add(square);
 	
-	setTimer(draw, 20);
+	keyDownMethod(keyDown);
 }
 
-function draw(){
-	ball.move(2, 2);
+function keyDown(e){
+	if(e.keyCode == Keyboard.LEFT){
+		square.move(-5, 0);
+	}
+	
+	if(e.keyCode == Keyboard.RIGHT){
+		square.move(5, 0);
+	}
+	
+	if(e.keyCode == Keyboard.letter('K')){
+		square.move(0, -5);
+	}
+	
+	if(e.keyCode == Keyboard.letter('J')){
+		square.move(0, 5);
+	}
 }
 
 

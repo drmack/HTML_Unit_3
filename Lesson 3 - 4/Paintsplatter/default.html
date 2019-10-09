@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Moving Ball</title>
+<title>Paint splatter</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -19,7 +19,7 @@ canvas {
 </head>
 
 <body>
-<h1>Moving Ball</h1>
+<h1>Paint splatter</h1>
 
 
 
@@ -31,17 +31,16 @@ class="codehs-editor-canvas"></canvas>
 <script>
 window.onload = function() {
 
-    var ball;
+     // Constants
+ var CIRCLES_PER_SPLATTER = 20;
+ var MIN_RADIUS = 5;
+ var MAX_RADIUS = 25;
+ var DELAY = 500;
 
+/* This program creates a paint splatter.
+ * It's art. */
 function start(){
-	ball = new Circle(20);
-	add(ball);
-	
-	setTimer(draw, 20);
-}
 
-function draw(){
-	ball.move(2, 2);
 }
 
 

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Moving Ball</title>
+<title>Coordinates</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -14,12 +14,19 @@ canvas {
     vertical-align: top;
 }
 
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
 </style>
 
 </head>
 
 <body>
-<h1>Moving Ball</h1>
+<h1>Coordinates</h1>
 
 
 
@@ -31,17 +38,11 @@ class="codehs-editor-canvas"></canvas>
 <script>
 window.onload = function() {
 
-    var ball;
-
+    /* This program displays the x and y
+ * coordinates in a label on the screen
+ * and updates when the mouse moves */
 function start(){
-	ball = new Circle(20);
-	add(ball);
 	
-	setTimer(draw, 20);
-}
-
-function draw(){
-	ball.move(2, 2);
 }
 
 

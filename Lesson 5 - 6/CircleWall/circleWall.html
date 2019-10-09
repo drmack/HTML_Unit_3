@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Moving Ball</title>
+<title>Circle Wall</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -14,12 +14,19 @@ canvas {
     vertical-align: top;
 }
 
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
 </style>
 
 </head>
 
 <body>
-<h1>Moving Ball</h1>
+<h1>Circle Wall</h1>
 
 
 
@@ -31,17 +38,14 @@ class="codehs-editor-canvas"></canvas>
 <script>
 window.onload = function() {
 
-    var ball;
+    // Constants
+var RADIUS = 20;
+var DELAY = 40;
+
+// Define your global variables here
 
 function start(){
-	ball = new Circle(20);
-	add(ball);
 	
-	setTimer(draw, 20);
-}
-
-function draw(){
-	ball.move(2, 2);
 }
 
 
